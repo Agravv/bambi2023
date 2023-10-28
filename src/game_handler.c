@@ -9,8 +9,8 @@ extern SegmentLCD_LowerCharSegments_TypeDef lowerCharSegments[SEGMENT_LCD_NUM_OF
 
 // Increase the digit position of a given part of the snake
 void inc_dig_pos(int index) {
-	if(snake[index].dig_pos == 7) {
-		snake[index].dig_pos = 1;
+	if(snake[index].dig_pos == 6) {
+		snake[index].dig_pos = 0;
 	}
 	else {
 		snake[index].dig_pos++;
@@ -19,8 +19,8 @@ void inc_dig_pos(int index) {
 
 // Decrease the digit position of a given part of the snake
 void dec_dig_pos(int index) {
-	if(snake[index].dig_pos == 1) {
-		snake[index].dig_pos = 7;
+	if(snake[index].dig_pos == 0) {
+		snake[index].dig_pos = 6;
 	}
 	else {
 		snake[index].dig_pos--;
@@ -43,7 +43,7 @@ void move(void) {
 				case UP:
 					if(prev_direction == RIGHT) {
 						// Digit 7 is an exceptional case with 2 extra segments
-						if(snake[0].dig_pos == 7) {
+						if(snake[0].dig_pos == 6) {
 							snake[0].seg_pos = 2;
 						}
 						else {
@@ -59,7 +59,7 @@ void move(void) {
 					break;
 				case DOWN:
 					if(prev_direction == RIGHT) {
-						if(snake[0].dig_pos == 7) {
+						if(snake[0].dig_pos == 6) {
 							snake[0].seg_pos = 1;
 						}
 						else {
@@ -87,7 +87,7 @@ void move(void) {
 			switch(direction) {
 				case UP:
 					if(prev_direction == RIGHT) {
-						if(snake[0].dig_pos == 7) {
+						if(snake[0].dig_pos == 6) {
 							snake[0].seg_pos = 1;
 						}
 						else {
@@ -103,7 +103,7 @@ void move(void) {
 					break;
 				case DOWN:
 					if(prev_direction == RIGHT) {
-						if(snake[0].dig_pos == 7) {
+						if(snake[0].dig_pos == 6) {
 							snake[0].seg_pos = 2;
 						}
 						else {
@@ -130,7 +130,7 @@ void move(void) {
 			switch(direction) {
 				case UP:
 					if(prev_direction == RIGHT) {
-						if(snake[0].dig_pos == 7) {
+						if(snake[0].dig_pos == 6) {
 							snake[0].seg_pos = 2;
 						}
 						else {
@@ -146,7 +146,7 @@ void move(void) {
 					break;
 				case DOWN:
 					if(prev_direction == RIGHT) {
-						if(snake[0].dig_pos == 7) {
+						if(snake[0].dig_pos == 6) {
 							snake[0].seg_pos = 1;
 						}
 						else {

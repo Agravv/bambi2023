@@ -21,6 +21,7 @@ void scanCb(void) {
 			direction = LEFT;						// new direction
 			break;
 		}
+		LESENSE_IntDisable(0x10000);
 	} else if (slidePos <= 24 && slidePos > -1) {
 		switch(direction) {
 				case 0:									// current direction: RIGHT
@@ -36,6 +37,7 @@ void scanCb(void) {
 					direction = RIGHT;			// new direction
 					break;
 				}
+		LESENSE_IntDisable(0x10000);
 	}
 }
 

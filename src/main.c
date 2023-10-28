@@ -9,36 +9,29 @@
 //#include "gpiointerrupt.c"
 #include "em_rtc.h"
 #include "segmentlcd.h"
-#include "em_lesense.h"
+#include "segmentlcd_individual.h"
 
 /* Drivers */
 #include "vddcheck.h"
-#include "caplesense.h"
 
 #include "bsp.h"
 
+#include "init.h"
 #include "game_handler.h"
 #include "display_snake_length.h"
 #include "game_end.h"
 #include "generate_apple.h"
 
-typedef struct position {
-	uint8_t dig_pos;
-	uint8_t seg_pos;
-} position;
+#include "game_variables.h"
 
-enum dir {
-	right, left, up, down
-};
+SegmentLCD_UpperCharSegments_TypeDef upperCharSegments[SEGMENT_LCD_NUM_OF_UPPER_CHARS];
+SegmentLCD_LowerCharSegments_TypeDef lowerCharSegments[SEGMENT_LCD_NUM_OF_LOWER_CHARS];
 
 position snake[37];
-uint8_t length = 1;
-enum dir direction = right;
+int length = 1;
+enum dir direction = RIGHT;
 
 position apple;
-
-
-
 
 int main(void)
 {

@@ -27,12 +27,6 @@
 SegmentLCD_UpperCharSegments_TypeDef upperCharSegments[SEGMENT_LCD_NUM_OF_UPPER_CHARS];
 SegmentLCD_LowerCharSegments_TypeDef lowerCharSegments[SEGMENT_LCD_NUM_OF_LOWER_CHARS];
 
-position snake[37];
-int length = 1;
-enum dir direction = RIGHT;
-
-position apple;
-
 int main(void)
 {
   /* Chip errata */
@@ -42,5 +36,9 @@ int main(void)
 
   /* Infinite loop */
   while (1) {
-	  	  game();
-  }
+	  	  //game();
+
+	  // random apple gen function test code
+//							  generate_apple();
+//							  show_apple();
+  }}

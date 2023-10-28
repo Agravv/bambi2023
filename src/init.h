@@ -12,6 +12,7 @@
 
 #include "em_lesense.h"
 #include "caplesense.h"
+#include "game_variables.h"
 
 
 void scanCb(void);

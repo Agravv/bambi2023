@@ -21,6 +21,7 @@
 #include "display_snake_length.h"
 #include "game_end.h"
 #include "generate_apple.h"
+#include "lcd_handler.h"
 
 #include "game_variables.h"
 
@@ -36,7 +37,7 @@ int main(void)
 
   /* Infinite loop */
   while (1) {
-	  	  //game();
+	  	  game();
 
 	  // random apple gen function test code
 //							  generate_apple();

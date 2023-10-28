@@ -5,6 +5,7 @@ extern uint8_t length;
 extern enum dir direction;
 //extern position apple;
 extern enum dir prev_direction;
+extern SegmentLCD_LowerCharSegments_TypeDef lowerCharSegments[SEGMENT_LCD_NUM_OF_LOWER_CHARS];
 
 // Increase the digit position of a given part of the snake
 void inc_dig_pos(int index) {
@@ -27,7 +28,7 @@ void dec_dig_pos(int index) {
 }
 
 // Perform 1 tile move based on head position, and desired direction
-void move() {
+void move(void) {
 	// Move all parts of the snake forward, except the head
 	for(int i = length - 1; i<0; i--) {
 		snake[i].dig_pos = snake[i-1].dig_pos;
@@ -283,4 +284,45 @@ void move() {
 			}
 			break;
 	}
+}
+
+void show_snake(void) {
+	for(int i = 0; i < length; i++) {
+		switch(snake[i].seg_pos) {
+		case 0:
+			lowerCharSegments[snake[i].dig_pos].a = 1;
+			break;
+		case 1:
+			lowerCharSegments[snake[i].dig_pos].b = 1;
+			break;
+		case 2:
+			lowerCharSegments[snake[i].dig_pos].c = 1;
+			break;
+		case 3:
+			lowerCharSegments[snake[i].dig_pos].d = 1;
+			break;
+		case 4:
+			lowerCharSegments[snake[i].dig_pos].e = 1;
+			break;
+		case 5:
+			lowerCharSegments[snake[i].dig_pos].f = 1;
+			break;
+		case 6:
+			lowerCharSegments[snake[i].dig_pos].g = 1;
+			lowerCharSegments[snake[i].dig_pos].m = 1;
+			break;
+		}
+		}
+	SegmentLCD_LowerSegments(lowerCharSegments);
+}
+
+void game(void) {
+	snake[0].dig_pos = 1;
+	snake[0].seg_pos = 6;
+
+	int timer = 900000;
+	while(1) {
+		own_timer(timer);
+	}
+
 }

@@ -3,7 +3,7 @@
 extern position snake[];
 extern uint8_t length;
 extern enum dir direction;
-extern position apple;
+//extern position apple;
 extern enum dir prev_direction;
 
 // Increase the digit position of a given part of the snake

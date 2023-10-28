@@ -1,5 +1,7 @@
 #ifndef GAME_HANDLER_H
-#include <math.h>
+#define GAME_HANDLER_H
+
+#include "game_variables.h"
 void move();
 
 #endif

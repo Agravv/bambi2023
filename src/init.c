@@ -6,7 +6,6 @@ extern enum dir prev_direction;
 volatile int slidePos;
 void scanCb(void) {
 	slidePos = CAPLESENSE_getSliderPosition();
-	prev_direction = direction;
 	if(slidePos > 24) {
 		switch(direction) {
 		case 0: 											// current direction: RIGHT

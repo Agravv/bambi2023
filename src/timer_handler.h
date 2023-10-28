@@ -5,6 +5,7 @@
 #include "em_chip.h"
 #include "em_lesense.h"
 #include "em_rtc.h"
+#include "game_variables.h"
 
 void own_timer(int duration);
 

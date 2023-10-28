@@ -9,6 +9,7 @@
 //#include "gpiointerrupt.c"
 #include "em_rtc.h"
 #include "segmentlcd.h"
+#include "em_lesense.h"
 
 /* Drivers */
 #include "vddcheck.h"
@@ -45,6 +46,9 @@ int main(void)
   BSP_LedClear(0);
   BSP_LedClear(1);
   CAPLESENSE_setupCallbacks(scanCb, chCb);
+  // EFM32GG-RM - 25.5.20 - LESENSE_IEN - Interrupt Enable Register - 16 SCANCOMPLETE - Set to enable interrupt on the SCANCOMPLETE interrupt flag
+  LESENSE_IntDisable(0x10000);
+  LESENSE_IntEnable(0x10000);
 
 
   /* Infinite loop */

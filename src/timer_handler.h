@@ -3,6 +3,8 @@
 
 #include "em_device.h"
 #include "em_chip.h"
+#include "em_lesense.h"
+#include "em_rtc.h"
 
 void own_timer(int duration);
 

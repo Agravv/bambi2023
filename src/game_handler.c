@@ -317,7 +317,7 @@ void show_snake(void) {
 }
 
 void game(void) {
-	snake[0].dig_pos = 1;
+	snake[0].dig_pos = 0;
 	snake[0].seg_pos = 6;
 
 	int timer = 900000;

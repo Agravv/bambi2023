@@ -63,5 +63,6 @@ void blink_decimal_points(void) {
 
 void game_end(void) {
 	LESENSE_IntDisable(0x10000);
+	clear_lower_lcd_screen();
 	blink_decimal_points();
 }

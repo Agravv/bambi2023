@@ -6,6 +6,7 @@
 #include "segmentlcd_individual.h"
 #include "segmentlcd.h"
 #include "lcd_handler.h"
+#include "game_variables.h"
 
 void display_snake_length(void);
 

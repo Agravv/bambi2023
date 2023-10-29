@@ -242,7 +242,7 @@ void move(void) {
 					}
 					else {
 						snake[0].seg_pos = 6;
-						inc_deg_pos(0);
+						inc_dig_pos(0);
 					}
 					break;
 				case RIGHT:
@@ -270,7 +270,7 @@ void move(void) {
 					}
 					else {
 						snake[0].seg_pos = 3;
-						inc_deg_pos(0);
+						inc_dig_pos(0);
 					}
 					break;
 				case RIGHT:

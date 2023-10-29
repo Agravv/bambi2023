@@ -321,9 +321,9 @@ void game(void) {
 	// starting position
 	snake[0].dig_pos = 0;
 	snake[0].seg_pos = 6;
-	LESENSE_IntEnable(0x10000);
 	generate_apple();
 	show_apple();
+	show_snake();
 	int timer = 900000;
 	while(!collided()) {
 		display_snake_length();

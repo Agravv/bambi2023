@@ -37,7 +37,13 @@ int main(void)
 
   /* Infinite loop */
   while (1) {
-	  	  game();
+	  	  //game();
+	  //blink_decimal_points();
+	  SegmentLCD_Symbol(LCD_SYMBOL_DP2, 1);
+	  SegmentLCD_Symbol(LCD_SYMBOL_DP3, 1);
+	  SegmentLCD_Symbol(LCD_SYMBOL_DP4, 1);
+	  SegmentLCD_Symbol(LCD_SYMBOL_DP5, 1);
+	  SegmentLCD_Symbol(LCD_SYMBOL_DP6, 1);
 
 	  // random apple gen function test code
 //							  generate_apple();

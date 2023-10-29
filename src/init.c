@@ -1,7 +1,7 @@
 #include "init.h"
 
 extern enum dir direction;
-extern enum dir prev_direction;
+//extern enum dir prev_direction;
 
 volatile int slidePos;
 void scanCb(void) {

@@ -317,6 +317,7 @@ void show_snake(void) {
 }
 
 void game(void) {
+	display_snake_length();
 	snake[0].dig_pos = 0;
 	snake[0].seg_pos = 6;
 

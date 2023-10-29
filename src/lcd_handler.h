@@ -1,7 +1,6 @@
 #ifndef LCD_HANDLING_H_
 #define LCD_HANDLING_H_
 
-// Includes
 #include "segmentlcd.h"
 #include "segmentlcd_individual.h"
 

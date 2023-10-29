@@ -1,14 +1,14 @@
 #include "game_handler.h"
 
-extern position snake[];
+extern position snake[37];
 extern uint8_t length;
-extern enum dir direction;
 extern position apple;
+extern enum dir direction;;
 extern enum dir prev_direction;
 extern SegmentLCD_LowerCharSegments_TypeDef lowerCharSegments[SEGMENT_LCD_NUM_OF_LOWER_CHARS];
 
 // Increase the digit position of a given part of the snake
-void inc_dig_pos(int index) {
+void inc_dig_pos(uint8_t index) {
 	if(snake[index].dig_pos == 6) {
 		snake[index].dig_pos = 0;
 	}
@@ -18,7 +18,7 @@ void inc_dig_pos(int index) {
 }
 
 // Decrease the digit position of a given part of the snake
-void dec_dig_pos(int index) {
+void dec_dig_pos(uint8_t index) {
 	if(snake[index].dig_pos == 0) {
 		snake[index].dig_pos = 6;
 	}
@@ -34,7 +34,7 @@ void move(void) {
 		snake[length].seg_pos = snake[length-1].seg_pos;
 	}
 	// Move all parts of the snake forward, except the head
-	for(int i = length - 1; i>0; i--) {
+	for(uint8_t i = length - 1; i>0; i--) {
 		snake[i].dig_pos = snake[i-1].dig_pos;
 		snake[i].seg_pos = snake[i-1].seg_pos;
 	}
@@ -294,8 +294,9 @@ void move(void) {
 	}
 }
 
+// printing snake on the LCD display
 void show_snake(void) {
-	for(int i = 0; i < length; i++) {
+	for(uint8_t i = 0; i < length; i++) {
 		switch(snake[i].seg_pos) {
 		case 0:
 			lowerCharSegments[snake[i].dig_pos].a = 1;
@@ -328,13 +329,15 @@ void game(void) {
 	// starting position
 	snake[0].dig_pos = 0;
 	snake[0].seg_pos = 6;
-	generate_apple();
-	show_apple();
-	show_snake();
-	int timer = 900000;
+
+	generate_apple();						// generating random apple
+	show_apple();							// printing the randomly generated apply to the LCD display
+	show_snake();							// printing the snake to the LCD display
+
+	// the game is finished, when the snake bit itself
 	while(!collided()) {
-		display_snake_length();
-		own_timer(timer);
+		display_snake_length();		// the length of the snake is shown on the upper LCD segment
+		perform_moving();				// moving the snake across the segments according to the touch slider's input
 	}
-	game_end();
+	game_end();								// blinking the decimal points, game ending state
 }

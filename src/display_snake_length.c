@@ -1,12 +1,13 @@
 #include "display_snake_length.h"
 
-extern int length;
+extern uint8_t length;
 extern SegmentLCD_UpperCharSegments_TypeDef upperCharSegments[SEGMENT_LCD_NUM_OF_UPPER_CHARS];
 
 void display_snake_length(void) {
 	clear_upper_lcd_screen();
-	//SegmentLCD_Number(length); // 0001, 0002 .....
-	// 01, 02, 03....
+	//SegmentLCD_Number(length); //  format of the output:  0001, 0002 .....
+
+	// format of the output:  01, 02, 03....
 	uint8_t single = length % 10;
 	uint8_t decimal = (uint8_t)(length/10);
 	switch(single) {
@@ -152,5 +153,5 @@ void display_snake_length(void) {
 					upperCharSegments[1].d = 1;
 					break;
 			}
-	SegmentLCD_UpperSegments(upperCharSegments);
+	SegmentLCD_UpperSegments(upperCharSegments); // format of the output:  01, 02, 03....
 }

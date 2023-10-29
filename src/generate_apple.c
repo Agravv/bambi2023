@@ -2,37 +2,49 @@
 
 extern position apple;
 extern position snake[37];
-extern int length;
+extern uint8_t length;
 
 extern SegmentLCD_LowerCharSegments_TypeDef lowerCharSegments[SEGMENT_LCD_NUM_OF_LOWER_CHARS];
 
 uint8_t temp_dig;
 uint8_t temp_seg;
 
-const int seg_dig1_6[5] = {0,3,4,5,6};
-const int seg_dig7[7] = {0,3,4,5,6,1,2};
+const uint8_t segments_in_digit_1_to_6[5] = {0,3,4,5,6};			// possible segments in case of digits 1 to 6
+const uint8_t segments_in_digit_7[7] = {0,3,4,5,6,1,2};			// possible segments for digit 7
 
+// randomly generates apple's position on the LCD
 void generate_apple(void) {
-	int bad_gen = 1;
-	while(bad_gen) {
+	// digit 1 is represented by index 0, ... , digit 7 is represented by index 6
+
+	uint8_t failed_generation = 1;
+	while(failed_generation) {
 		temp_dig = rand() % 7;
+
+		// digit 7
 		if(temp_dig == 6) {
-			temp_seg = seg_dig7[rand()%7];
-		} else {
-			temp_seg = seg_dig1_6[rand()%5];
+			temp_seg =segments_in_digit_7[rand()%7];
 		}
-		bad_gen = 0;
-		for(int i = 0; i < length; i++) {
+		// digit 1 to 6
+		else {
+			temp_seg = segments_in_digit_1_to_6[rand()%5];
+		}
+		failed_generation = 0;
+		// failed_generation increases if the snake's position is conflicting the newly generated apple
+		// if so, the while cycle generates a new one
+		for(uint8_t i = 0; i < length; i++) {
 			if(snake[i].dig_pos == temp_dig && snake[i].seg_pos == temp_seg) {
-				bad_gen++;
+				failed_generation++;
 			}
 		}
 	}
+	// the previously tested new apple position is set for the apple
 	apple.dig_pos = temp_dig;
 	apple.seg_pos = temp_seg;
 }
 
+//prints the apple on the LCD display
 void show_apple(void) {
+	// switch case for the segment positions
 	switch(apple.seg_pos) {
 	case 0:
 		lowerCharSegments[apple.dig_pos].a = 1;
@@ -57,5 +69,5 @@ void show_apple(void) {
 		lowerCharSegments[apple.dig_pos].m = 1;
 		break;
 	}
-	SegmentLCD_LowerSegments(lowerCharSegments);
+	SegmentLCD_LowerSegments(lowerCharSegments);			// printing to the LCD
 }

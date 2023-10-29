@@ -1,14 +1,14 @@
 #ifndef GAME_HANDLER_H
 #define GAME_HANDLER_H
 
-#include "game_variables.h"
 #include "timer_handler.h"
-#include "segmentlcd.h"
+#include "game_variables.h"
+#include "game_end.h"
 #include "display_snake_length.h"
-#include "segmentlcd_individual.h"
+#include "generate_apple.h"
 
-void dec_dig_pos(int index);
-void inc_dig_pos(int index);
+void dec_dig_pos(uint8_t index);
+void inc_dig_pos(uint8_t index);
 void move(void);
 void show_snake(void);
 void game(void);

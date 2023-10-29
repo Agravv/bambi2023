@@ -6,6 +6,7 @@
 // TODO
 // delete this
 extern enum dir direction;
+extern enum dir prev_direction;
 
 void display_snake_length(void) {
 	clear_upper_lcd_screen();
@@ -22,7 +23,22 @@ void display_snake_length(void) {
 		break;
 	case 3:
 		a = 3;
-		break;}
+		break;
+	}
+	switch(prev_direction) {
+	case 0:
+		a += 0;
+		break;
+	case 1:
+		a += 10;
+		break;
+	case 2:
+		a += 20;
+		break;
+	case 3:
+		a += 30;
+		break;
+	}
 	SegmentLCD_Number(a);
 }
 // delete this

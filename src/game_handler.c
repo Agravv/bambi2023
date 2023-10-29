@@ -3,7 +3,7 @@
 extern position snake[];
 extern uint8_t length;
 extern enum dir direction;
-//extern position apple;
+extern position apple;
 extern enum dir prev_direction;
 extern SegmentLCD_LowerCharSegments_TypeDef lowerCharSegments[SEGMENT_LCD_NUM_OF_LOWER_CHARS];
 
@@ -29,10 +29,18 @@ void dec_dig_pos(int index) {
 
 // Perform 1 tile move based on head position, and desired direction
 void move(void) {
+	if(snake[0].dig_pos == apple.dig_pos && snake[0].seg_pos == apple.seg_pos) {
+		snake[length].dig_pos = snake[length-1].dig_pos;
+		snake[length].seg_pos = snake[length-1].seg_pos;
+	}
 	// Move all parts of the snake forward, except the head
 	for(int i = length - 1; i>0; i--) {
 		snake[i].dig_pos = snake[i-1].dig_pos;
 		snake[i].seg_pos = snake[i-1].seg_pos;
+	}
+	if(snake[0].dig_pos == apple.dig_pos && snake[0].seg_pos == apple.seg_pos) {
+		length++;
+		generate_apple();
 	}
 	switch(snake[0].seg_pos) {
 		// Top horizontal, only possible directions are up, down, or right

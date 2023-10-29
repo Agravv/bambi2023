@@ -34,7 +34,6 @@ void move(void) {
 		snake[i].dig_pos = snake[i-1].dig_pos;
 		snake[i].seg_pos = snake[i-1].seg_pos;
 	}
-	// Currently in a horizontal row
 	switch(snake[0].seg_pos) {
 		// Top horizontal, only possible directions are up, down, or right
 		// Only possible previous directions are left or right
@@ -185,6 +184,7 @@ void move(void) {
 					}
 					else {
 						snake[0].seg_pos = 3;
+						dec_dig_pos(0);
 					}
 					break;
 				case RIGHT:
@@ -193,7 +193,6 @@ void move(void) {
 					}
 					else {
 						snake[0].seg_pos = 3;
-						dec_dig_pos(0);
 					}
 					break;
 			}
@@ -214,6 +213,7 @@ void move(void) {
 					}
 					else {
 						snake[0].seg_pos = 6;
+						dec_dig_pos(0);
 					}
 					break;
 				case RIGHT:
@@ -222,7 +222,6 @@ void move(void) {
 					}
 					else {
 						snake[0].seg_pos = 6;
-						dec_dig_pos(0);
 					}
 					break;
 			}
@@ -242,7 +241,6 @@ void move(void) {
 					}
 					else {
 						snake[0].seg_pos = 6;
-						inc_dig_pos(0);
 					}
 					break;
 				case RIGHT:
@@ -252,6 +250,7 @@ void move(void) {
 					}
 					else {
 						snake[0].seg_pos = 6;
+						inc_dig_pos(0);
 					}
 					break;
 			}
@@ -270,7 +269,6 @@ void move(void) {
 					}
 					else {
 						snake[0].seg_pos = 3;
-						inc_dig_pos(0);
 					}
 					break;
 				case RIGHT:
@@ -280,6 +278,7 @@ void move(void) {
 					}
 					else {
 						snake[0].seg_pos = 3;
+						inc_dig_pos(0);
 					}
 					break;
 			}

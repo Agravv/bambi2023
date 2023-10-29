@@ -30,7 +30,7 @@ void dec_dig_pos(int index) {
 // Perform 1 tile move based on head position, and desired direction
 void move(void) {
 	// Move all parts of the snake forward, except the head
-	for(int i = length - 1; i<0; i--) {
+	for(int i = length - 1; i>0; i--) {
 		snake[i].dig_pos = snake[i-1].dig_pos;
 		snake[i].seg_pos = snake[i-1].seg_pos;
 	}
@@ -52,6 +52,7 @@ void move(void) {
 							inc_dig_pos(0);
 						}
 					}
+					// if direction was not right, then it must have been left
 					else {
 						// Stays on the same digit
 						snake[0].seg_pos = 4;
@@ -65,15 +66,15 @@ void move(void) {
 						else {
 							// Moves 1 digit to the right to reach the correct segment
 							snake[0].seg_pos = 5;
+							inc_dig_pos(0);
 						}
-						inc_dig_pos(0);
 					}
 					else {
 						// Stays on the same digit
 						snake[0].seg_pos = 5;
 					}
 					break;
-				// Snake can not turn 180 degrees, no need to scheck prev. direction
+				// Snake can not turn 180 degrees, no need to check prev. direction
 				case LEFT:
 					dec_dig_pos(0);
 					break;
@@ -82,7 +83,7 @@ void move(void) {
 					break;
 			}
 			break;
-		// Middle horizontal
+		// Middle horizontal (6-g, 10-m segment)
 		case 6:
 			switch(direction) {
 				case UP:
@@ -168,7 +169,7 @@ void move(void) {
 					break;
 			}
 			break;
-		// Top vertical, only possible previous
+		// Bottom vertical
 		case 4:
 			switch(direction) {
 				case UP:
@@ -184,7 +185,6 @@ void move(void) {
 					}
 					else {
 						snake[0].seg_pos = 3;
-						dec_dig_pos(0);
 					}
 					break;
 				case RIGHT:
@@ -193,11 +193,12 @@ void move(void) {
 					}
 					else {
 						snake[0].seg_pos = 3;
+						dec_dig_pos(0);
 					}
 					break;
 			}
 			break;
-		// Bottom vertial
+		// Bottom vertical
 		case 5:
 			switch(direction) {
 				case UP:
@@ -213,7 +214,6 @@ void move(void) {
 					}
 					else {
 						snake[0].seg_pos = 6;
-						dec_dig_pos(0);
 					}
 					break;
 				case RIGHT:
@@ -222,6 +222,7 @@ void move(void) {
 					}
 					else {
 						snake[0].seg_pos = 6;
+						dec_dig_pos(0);
 					}
 					break;
 			}
@@ -241,6 +242,7 @@ void move(void) {
 					}
 					else {
 						snake[0].seg_pos = 6;
+						inc_deg_pos(0);
 					}
 					break;
 				case RIGHT:
@@ -250,7 +252,6 @@ void move(void) {
 					}
 					else {
 						snake[0].seg_pos = 6;
-						inc_dig_pos(0);
 					}
 					break;
 			}
@@ -269,6 +270,7 @@ void move(void) {
 					}
 					else {
 						snake[0].seg_pos = 3;
+						inc_deg_pos(0);
 					}
 					break;
 				case RIGHT:
@@ -278,7 +280,6 @@ void move(void) {
 					}
 					else {
 						snake[0].seg_pos = 3;
-						inc_dig_pos(0);
 					}
 					break;
 			}

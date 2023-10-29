@@ -317,13 +317,16 @@ void show_snake(void) {
 }
 
 void game(void) {
-	display_snake_length();
+	// starting position
 	snake[0].dig_pos = 0;
 	snake[0].seg_pos = 6;
-
+	LESENSE_IntEnable(0x10000);
+	generate_apple();
+	show_apple();
 	int timer = 900000;
-	while(1) {
+	while(!collided()) {
+		display_snake_length();
 		own_timer(timer);
 	}
-
+	game_end();
 }

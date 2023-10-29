@@ -4,7 +4,7 @@ extern int length;
 extern SegmentLCD_UpperCharSegments_TypeDef upperCharSegments[SEGMENT_LCD_NUM_OF_UPPER_CHARS];
 
 void display_snake_length(void) {
-	clear_lower_lcd_screen();
+	clear_upper_lcd_screen();
 	//SegmentLCD_Number(length); // 0001, 0002 .....
 	// 01, 02, 03....
 	uint8_t single = length % 10;

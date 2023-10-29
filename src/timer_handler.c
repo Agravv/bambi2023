@@ -11,7 +11,6 @@ void own_timer(int duration)
 	prev_direction = direction;
 	clear_lower_lcd_screen();
 	show_snake();
+	show_apple();
 	LESENSE_IntEnable(0x10000);
-
-
 }

@@ -9,22 +9,22 @@ extern SegmentLCD_LowerCharSegments_TypeDef lowerCharSegments[SEGMENT_LCD_NUM_OF
 uint8_t temp_dig;
 uint8_t temp_seg;
 
-const uint8_t segments_in_digit_1_to_6[5] = {0,3,4,5,6};			// possible segments in case of digits 1 to 6
-const uint8_t segments_in_digit_7[7] = {0,3,4,5,6,1,2};			// possible segments for digit 7
+const uint8_t segments_in_digit_1_to_6[5] = {0,3,4,5,6};			// Possible segments in case of digits 1 to 6
+const uint8_t segments_in_digit_7[7] = {0,3,4,5,6,1,2};				// Possible segments for digit 7
 
-// randomly generates apple's position on the LCD
+// Randomly generates the apple's position on the LCD
 void generate_apple(void) {
-	// digit 1 is represented by index 0, ... , digit 7 is represented by index 6
+	// Digit 1 is represented by index 0, ... , digit 7 is represented by index 6
 
 	uint8_t failed_generation = 1;
 	while(failed_generation) {
 		temp_dig = rand() % 7;
 
-		// digit 7
+		// Digit 7
 		if(temp_dig == 6) {
-			temp_seg =segments_in_digit_7[rand()%7];
+			temp_seg = segments_in_digit_7[rand()%7];
 		}
-		// digit 1 to 6
+		// Digit 1 to 6
 		else {
 			temp_seg = segments_in_digit_1_to_6[rand()%5];
 		}
@@ -37,14 +37,14 @@ void generate_apple(void) {
 			}
 		}
 	}
-	// the previously tested new apple position is set for the apple
+	// The previously tested new apple position is set for the apple
 	apple.dig_pos = temp_dig;
 	apple.seg_pos = temp_seg;
 }
 
-//prints the apple on the LCD display
+// Prints the apple on the LCD display
 void show_apple(void) {
-	// switch case for the segment positions
+	// Switch case for the segment positions
 	switch(apple.seg_pos) {
 	case 0:
 		lowerCharSegments[apple.dig_pos].a = 1;
@@ -69,5 +69,5 @@ void show_apple(void) {
 		lowerCharSegments[apple.dig_pos].m = 1;
 		break;
 	}
-	SegmentLCD_LowerSegments(lowerCharSegments);			// printing to the LCD
+	SegmentLCD_LowerSegments(lowerCharSegments);			// Print to the LCD
 }

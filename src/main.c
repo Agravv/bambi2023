@@ -6,9 +6,6 @@
 #include "lcd_handler.h"
 #include "game_variables.h"
 
-SegmentLCD_UpperCharSegments_TypeDef upperCharSegments[SEGMENT_LCD_NUM_OF_UPPER_CHARS];
-SegmentLCD_LowerCharSegments_TypeDef lowerCharSegments[SEGMENT_LCD_NUM_OF_LOWER_CHARS];
-
 int main(void)
 {
   /* Chip errata */

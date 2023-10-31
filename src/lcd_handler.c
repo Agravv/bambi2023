@@ -3,7 +3,7 @@
 extern SegmentLCD_LowerCharSegments_TypeDef lowerCharSegments[];
 extern SegmentLCD_UpperCharSegments_TypeDef upperCharSegments[];
 
-// clears any input on the lower LCD
+// Clears any input on the lower LCD
 void clear_lower_lcd_screen(void)
 {
 	for(uint8_t i = 0; i < SEGMENT_LCD_NUM_OF_LOWER_CHARS; i++) {
@@ -12,7 +12,7 @@ void clear_lower_lcd_screen(void)
 	SegmentLCD_LowerSegments(lowerCharSegments);
 }
 
-// clears any input on the upper LCD
+// Clears any input on the upper LCD
 void clear_upper_lcd_screen(void)
 {
 	for (uint8_t i = 0; i < SEGMENT_LCD_NUM_OF_UPPER_CHARS; i++){

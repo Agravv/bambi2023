@@ -11,7 +11,6 @@
 
 void SysTick_Handler(void);
 void Delay(uint32_t dlyTicks);
-void lesense_input(void);
 void init_elsense(void);
 void init_lcd(void);
 void init(void);

@@ -4,7 +4,11 @@
 #include "generate_apple.h"
 #include "game_variables.h"
 #include "game_end.h"
+#include "game_handler.h"
 #include "display_snake_length.h"
+#include "em_lesense.h"
+#include "caplesense.h"
+#include "init.h"
 
 void lesense_input(void);
 void perform_moving(void);

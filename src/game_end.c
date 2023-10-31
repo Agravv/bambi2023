@@ -3,13 +3,13 @@
 extern uint8_t length;
 extern position snake[37];
 
-// check if the snake bites its own body
-// return value == 1: collision
-// return value == 0: no collision
+// Check if the snake bites its own body
+// Return value == 1: collision
+// Return value == 0: no collision
 uint8_t collided(void) {
 	uint8_t return_value = 0;
 	for(uint8_t i =1; i < length; i++) {
-		// checks if the snake's head and any of the body parts are on the same segment
+		// Checks if the snake's head and any of the body parts are on the same segment
 		if(snake[0].dig_pos == snake[i].dig_pos && snake[0].seg_pos == snake[i].seg_pos) {
 			return_value = 1;
 			break;
@@ -18,9 +18,9 @@ uint8_t collided(void) {
 	return return_value;
 }
 
-// if the game ends, the decimal points are blinking
+// If the game ends, the decimal points start blinking
 void blink_decimal_points(void) {
-	// for some reason the DP6 decimal point wont blink
+	// For some reason the DP6 decimal point wont blink
 //	while(1) {
 //		// Decimal points on
 //		SegmentLCD_Symbol(LCD_SYMBOL_DP2, 1);

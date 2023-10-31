@@ -43,7 +43,7 @@ void move(void) {
 		generate_apple();
 	}
 	switch(snake[0].seg_pos) {
-		// Top horizontal, only possible directions are up, down, or right
+		// Top horizontal
 		// Only possible previous directions are left or right
 		case 0:
 			switch(direction) {
@@ -59,7 +59,7 @@ void move(void) {
 							inc_dig_pos(0);
 						}
 					}
-					// if direction was not right, then it must have been left
+					// If direction was not right, then it must have been left
 					else {
 						// Stays on the same digit
 						snake[0].seg_pos = 4;
@@ -205,7 +205,7 @@ void move(void) {
 					break;
 			}
 			break;
-		// Bottom vertical
+		// Top vertical
 		case 5:
 			switch(direction) {
 				case UP:
@@ -294,7 +294,7 @@ void move(void) {
 	}
 }
 
-// printing snake on the LCD display
+// Prints the snake on the LCD display
 void show_snake(void) {
 	for(uint8_t i = 0; i < length; i++) {
 		switch(snake[i].seg_pos) {
@@ -326,18 +326,18 @@ void show_snake(void) {
 }
 
 void game(void) {
-	// starting position
+	// Starting position
 	snake[0].dig_pos = 0;
 	snake[0].seg_pos = 6;
 
-	generate_apple();						// generating random apple
-	show_apple();							// printing the randomly generated apply to the LCD display
-	show_snake();							// printing the snake to the LCD display
+	generate_apple();						// Generate apple in a random position
+	show_apple();							// Print the randomly generated apple to the LCD display
+	show_snake();							// Print the snake to the LCD display
 
-	// the game is finished, when the snake bit itself
+	// The game finishes, when the snake moves on itself
 	while(!collided()) {
-		display_snake_length();		// the length of the snake is shown on the upper LCD segment
-		perform_moving();				// moving the snake across the segments according to the touch slider's input
+		display_snake_length();		// The length of the snake is shown on the upper LCD segment
+		perform_moving();				// Move the snake across the segments according to the touch slider's input
 	}
-	game_end();								// blinking the decimal points, game ending state
+	game_end();								// Blink the decimal points, game ending state
 }
